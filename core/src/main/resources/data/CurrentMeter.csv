@@ -1,0 +1,7 @@
+meterId,house,scno,subMeter,parentMeter,prevReading,currentReading
+1,1,6411 03797,false,,,
+2,1,6411 03798,false,,,
+3,1,6411 01909,false,,,
+4,1,6411 03969,false,,,
+5,1,6411 02865,false,,1230,1350
+6,1,,true,5,200,280

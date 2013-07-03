@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Portion wise charges</title>
+<link href="css/responsive.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.fittext.js"></script>
+
+</head>
+<body>
+	<marquee direction="left" behavior="alternate">Bhagyalatha</marquee>
+	<div class="contianer">
+		<table border="0" cellpadding="0" cellspacing="0"
+			class="owner-view-table" id="fittext2">
+			<thead style="background-color: AppWorkspace">
+				<tr>
+					<th class="owner-view-th" align="left">Portion</th>
+					<th class="owner-view-th" align="right">Rent</th>
+					<th class="owner-view-th" align="right">Current Bill</th>
+					<th class="owner-view-th" align="right">Water Bill</th>
+					<th class="owner-view-th" align="right">Total</th>
+				</tr>
+			</thead>
+			<tbody>
+							</tbody>
+		</table>
+	</div>
+	<div class="logoWrapper"><a href="index.html"><img class="logo" src="img/hrmLogo.png" /></a></div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("th").fitText(1.1, {
+				minFontSize : 30,
+				maxFontSize : '75px'
+			});
+			$("td").fitText(1.1, {
+				minFontSize : 30,
+				maxFontSize : '75px'
+			});
+			$("marquee").fitText(1.1, {
+				minFontSize : 20,
+				maxFontSize : '35px'
+			});
+		});
+	</script>
+</body>
+</html>

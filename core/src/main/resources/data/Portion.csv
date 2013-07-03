@@ -1,0 +1,5 @@
+portionId,house,name,rent,members,owner
+1,1,Ground Front,4700,5,
+2,1,Ground Back,3000,2,
+3,1,Self Occupied,0,5,true
+4,1,Pent House,4000,3,

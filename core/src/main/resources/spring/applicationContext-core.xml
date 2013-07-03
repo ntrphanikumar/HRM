@@ -1,0 +1,70 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+	<bean id="waterArrearService"
+		class="com.nrkpj.commetial.hrm.core.services.HMWSSBArrearService" />
+
+	<bean id="electricityArrearService"
+		class="com.nrkpj.commetial.hrm.core.services.APCPDCLArrearService" />
+
+	<bean id="houseCache" class="com.nrkpj.commetial.hrm.core.cache.HouseCache"
+		init-method="init">
+		<constructor-arg value="classpath:data/House.csv" />
+	</bean>
+
+	<bean id="portionCache" class="com.nrkpj.commetial.hrm.core.cache.PortionCache"
+		init-method="init">
+		<constructor-arg value="classpath:data/Portion.csv" />
+		<constructor-arg ref="houseCache" />
+	</bean>
+
+	<bean id="currentMeterCache" class="com.nrkpj.commetial.hrm.core.cache.MeterCache"
+		init-method="init">
+		<constructor-arg value="classpath:data/CurrentMeter.csv" />
+		<constructor-arg ref="houseCache" />
+		<constructor-arg value="com.nrkpj.commetial.hrm.core.dos.CurrentMeter" />
+	</bean>
+
+	<bean id="waterMeterCache" class="com.nrkpj.commetial.hrm.core.cache.MeterCache"
+		init-method="init">
+		<constructor-arg value="classpath:data/WaterMeter.csv" />
+		<constructor-arg ref="houseCache" />
+		<constructor-arg value="com.nrkpj.commetial.hrm.core.dos.WaterMeter" />
+	</bean>
+
+	<bean id="portionCurrentMeterCache" class="com.nrkpj.commetial.hrm.core.cache.PortionMeterCache"
+		init-method="init">
+		<constructor-arg value="classpath:data/PortionCurrentMeter.csv" />
+		<constructor-arg ref="portionCache" />
+		<constructor-arg ref="currentMeterCache" />
+	</bean>
+
+	<bean id="portionWaterMeterCache" class="com.nrkpj.commetial.hrm.core.cache.PortionMeterCache"
+		init-method="init">
+		<constructor-arg value="classpath:data/PortionWaterMeter.csv" />
+		<constructor-arg ref="portionCache" />
+		<constructor-arg ref="waterMeterCache" />
+	</bean>
+
+	<bean id="currentPopulatorService"
+		class="com.nrkpj.commetial.hrm.core.services.ArrearsPopulatorService">
+		<constructor-arg ref="electricityArrearService" />
+		<constructor-arg ref="currentMeterCache" />
+	</bean>
+
+	<bean id="waterPopulatorService"
+		class="com.nrkpj.commetial.hrm.core.services.ArrearsPopulatorService">
+		<constructor-arg ref="waterArrearService" />
+		<constructor-arg ref="waterMeterCache" />
+	</bean>
+
+	<bean id="amountService" class="com.nrkpj.commetial.hrm.core.services.AmountService" />
+</beans> 

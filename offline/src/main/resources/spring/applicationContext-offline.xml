@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="velocityEngine" class="org.apache.velocity.app.VelocityEngine"
+		init-method="init">
+		<constructor-arg>
+			<props>
+				<prop key="resource.loader">file</prop>
+				<prop key="file.resource.loader.class">org.apache.velocity.runtime.resource.loader.FileResourceLoader
+				</prop>
+				<prop key="file.resource.loader.path">src/main/resources/velocity</prop>
+				<prop key="file.resource.loader.cache">true</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+
+	<bean id="arrearsVerifier"
+		class="com.nrkpj.commetial.hrm.offline.ArrearsPopulationVerifier">
+		<constructor-arg ref="currentPopulatorService" />
+		<constructor-arg ref="waterPopulatorService" />
+		<constructor-arg ref="offlinePagesGenerator" />
+		<constructor-arg ref="houseCache" />
+	</bean>
+
+	<bean id="houseListPageGenerator" class="com.nrkpj.commetial.hrm.offline.HouseListPageGenerator">
+		<constructor-arg ref="velocityEngine" />
+		<constructor-arg ref="pageHelper" />
+	</bean>
+
+	<bean id="housePortionsPageGenerator"
+		class="com.nrkpj.commetial.hrm.offline.HousePortionsPageGenerator">
+		<constructor-arg ref="velocityEngine" />
+		<constructor-arg ref="pageHelper" />
+	</bean>
+
+	<bean id="offlinePagesGenerator" class="com.nrkpj.commetial.hrm.offline.HRMMobilePagesGenerator">
+		<constructor-arg>
+			<list>
+				<ref bean="houseListPageGenerator" />
+				<ref bean="housePortionsPageGenerator" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="pageHelper" class="com.nrkpj.commetial.hrm.offline.PageHelper">
+		<constructor-arg ref="amountService" />
+	</bean>
+</beans> 

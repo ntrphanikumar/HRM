@@ -1,0 +1,9 @@
+portion,meter,formula,display
+1,1,([peopleInPortion]/[totalPeopleSharing]),Water Bill
+1,2,([peopleInPortion]/[totalPeopleSharing]),Water Bill
+2,1,([peopleInPortion]/[totalPeopleSharing]),Water Bill
+2,2,([peopleInPortion]/[totalPeopleSharing]),Water Bill
+3,1,([peopleInPortion]/[totalPeopleSharing]),Water Bill
+3,2,([peopleInPortion]/[totalPeopleSharing]),Water Bill
+4,1,([peopleInPortion]/[totalPeopleSharing]),Water Bill
+4,2,([peopleInPortion]/[totalPeopleSharing]),Water Bill

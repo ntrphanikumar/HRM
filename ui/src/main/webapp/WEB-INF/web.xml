@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+
+	<servlet>
+		<servlet-name>startup</servlet-name>
+		<servlet-class>com.nrkpj.commetial.hrm.ui.servlets.StartupServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ArrearFinder</servlet-name>
+		<servlet-class>com.nrkpj.commetial.hrm.ui.servlets.ArrearFinder
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ArrearFinder</servlet-name>
+		<url-pattern>/arrearfinder</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<listener>
+		<listener-class>org.h2.server.web.DbStarter</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>db.url</param-name>
+		<param-value>jdbc:h2:~/hrm</param-value>
+	</context-param>
+	<context-param>
+		<param-name>db.user</param-name>
+		<param-value>sa</param-value>
+	</context-param>
+	<context-param>
+		<param-name>db.password</param-name>
+		<param-value>sa</param-value>
+	</context-param>
+	<context-param>
+		<param-name>db.tcpServer</param-name>
+		<param-value>-tcpAllowOthers</param-value>
+	</context-param>
+
+</web-app>

@@ -1,0 +1,10 @@
+meter,portion,formula,display
+1,3,1,Current Bill
+2,1,1,Current Bill
+3,3,1,Current Bill
+4,4,1,Current Bill
+5,2,(([totalConsumedUnits]-[consumedUnitsOfSubmeters])/[totalConsumedUnits]),Current Bill
+6,1,([consumedUnits]/[totalConsumedUnits])*([peopleInPortion]/[totalPeopleSharing]),Water Motor
+6,2,([consumedUnits]/[totalConsumedUnits])*([peopleInPortion]/[totalPeopleSharing]),Water Motor
+6,3,([consumedUnits]/[totalConsumedUnits])*([peopleInPortion]/[totalPeopleSharing]),Water Motor
+6,4,([consumedUnits]/[totalConsumedUnits])*([peopleInPortion]/[totalPeopleSharing]),Water Motor
